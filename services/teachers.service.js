@@ -1,8 +1,8 @@
 const db = require('../db')
-const Student = db.students;
+const Teacher = db.Teacher;
 
 module.exports = {
   findAll: async () => {
-    return JSON.stringify(await Student.findAll({}));
+    return JSON.stringify(await Teacher.findAll({}));
   }
 }
