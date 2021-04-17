@@ -1,7 +1,11 @@
+require('dotenv').config();
+
 const express = require('express');
 const db = require('./db');
 const app = express();
 const PORT = process.env.APP_PORT || 3000;
+
+
 
 app.use(express.json())
 app.use(express.urlencoded({
@@ -16,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 require('./routes/students.routes')(app);
+require('./routes/teachers.routes')(app);
 
 app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}.`)
