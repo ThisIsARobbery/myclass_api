@@ -4,6 +4,7 @@ const Student = require('../models/student.model');
 const Teacher = require('../models/teacher.model');
 const Lesson = require('../models/lesson.model');
 const Lesson_Student = require('../models/lesson_student.model');
+const Lesson_Teacher = require('../models/lesson_teacher.model');
 
 const sequelize = new Sequelize(
   DB_CONFIG.DB,
@@ -19,10 +20,12 @@ const models = {
   Teacher: Teacher(sequelize, Sequelize),
   Lesson: Lesson(sequelize, Sequelize),
   Lesson_Student: Lesson_Student(sequelize, Sequelize),
+  Lesson_Teacher: Lesson_Teacher(sequelize, Sequelize),
 };
 
 Object.keys(models).forEach(key => {
   if ('associate' in models[key]) {
+    console.log(`Associate on ${key}`);
     models[key].associate(models);
   }
 });

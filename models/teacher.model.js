@@ -18,5 +18,14 @@ module.exports = (sequelize, Sequelize) => {
     createdAt: false,
     updatedAt: false
   });
+  // Teacher.associate = (models) => {
+  //   const { Lesson } = models;
+  //   Teacher.Lessons = Lesson.belongsToMany(Lesson, {
+  //     as: 'Lessons',
+  //     through: 'lesson_teachers',
+  //     primaryKey: true
+  //   });
+  //   return Teacher;
+  // }
   return Teacher;
 }
