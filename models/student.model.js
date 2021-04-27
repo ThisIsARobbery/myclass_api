@@ -21,10 +21,10 @@ module.exports = (sequelize, Sequelize) => {
   
   Student.associate = (models) => {
     const { Lesson, Lesson_Student } = models;
-    Student.Lessons = Student.belongsToMany(Lesson, {
-      as: 'Lessons',
+    Student.lessons = Student.belongsToMany(Lesson, {
+      as: 'lessons',
       through: Lesson_Student,
-      primaryKey: true
+      foreignKey: 'student_id',
     });
   }
   return Student;

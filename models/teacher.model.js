@@ -18,14 +18,13 @@ module.exports = (sequelize, Sequelize) => {
     createdAt: false,
     updatedAt: false
   });
-  // Teacher.associate = (models) => {
-  //   const { Lesson } = models;
-  //   Teacher.Lessons = Lesson.belongsToMany(Lesson, {
-  //     as: 'Lessons',
-  //     through: 'lesson_teachers',
-  //     primaryKey: true
-  //   });
-  //   return Teacher;
-  // }
+  Teacher.associate = (models) => {
+    const { Lesson, Lesson_Teacher } = models;
+    Teacher.lessons = Lesson.belongsToMany(Lesson, {
+      as: 'lessons',
+      through: Lesson_Teacher,
+      foreignKey: 'teacher_id'
+    });
+  }
   return Teacher;
 }

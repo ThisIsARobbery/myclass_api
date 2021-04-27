@@ -27,12 +27,19 @@ module.exports = (sequelize, Sequelize) => {
     updatedAt: false
   });
   Lesson.associate = (models) => {
-    const { Student, Lesson_Student } = models;
-    Lesson.Students = Lesson.belongsToMany(Student, {
-      as: 'Students',
+    const { Student, Teacher, Lesson_Student, Lesson_Teacher } = models;
+    Lesson.students = Lesson.belongsToMany(Student, {
+      as: 'students',
       through: Lesson_Student,
-      primaryKey: true
+      foreignKey: 'lesson_id',
+      otherKey: 'student_id'
     });
+    Lesson.teachers = Lesson.belongsToMany(Teacher, {
+      as: 'teachers',
+      through: Lesson_Teacher,
+      foreignKey: 'lesson_id',
+      otherKey: 'teacher_id'
+    })
     return Lesson;
   }
   return Lesson;

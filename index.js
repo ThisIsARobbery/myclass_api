@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 
 require('./routes/students.routes')(app);
 require('./routes/teachers.routes')(app);
+require('./routes/lessons.routes')(app);
 
 app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}.`)

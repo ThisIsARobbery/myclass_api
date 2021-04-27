@@ -20,6 +20,11 @@ module.exports = (sequelize, Sequelize) => {
         key: 'id'
       }
     }
+  }, {
+    tableName: 'lesson_teachers',
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false
   });
   Lesson_Teacher.associate = (models) => {
     const { Lesson, Teacher } = models;
